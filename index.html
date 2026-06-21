@@ -3,30 +3,524 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QA Automation & SDET Master Handbook</title>
+    <title>QA Automation & SDET Master Handbook (21 Modules)</title>
+    <!-- Pico.css CDN for modern semantic web design -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <style>
-        body { padding: 2rem 0; line-height: 1.6; }
-        header { border-bottom: 2px solid #333; margin-bottom: 2rem; }
-        pre, code { background-color: #1a1a1a; color: #00ff66; padding: 0.5rem; border-radius: 5px; }
-        table { width: 100%; margin: 1.5rem 0; border-collapse: collapse; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f4f4f4; color: black; }
+        :root {
+            --primary: #2563eb;
+            --code-bg: #1e1e2e;
+            --code-text: #f8f8f2;
+            --sidebar-width: 320px;
+        }
+        body {
+            display: flex;
+            min-height: 100vh;
+            margin: 0;
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #f8fafc;
+            line-height: 1.6;
+        }
+        /* Sticky Left Sidebar Navigation */
+        aside {
+            width: var(--sidebar-width);
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 1.5rem;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            border-right: 1px solid #1e293b;
+            z-index: 100;
+        }
+        aside h2 {
+            font-size: 1.1rem;
+            color: #38bdf8;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        aside nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        aside nav ul li {
+            margin-bottom: 0.5rem;
+        }
+        aside nav ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: block;
+            padding: 0.35rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        aside nav ul li a:hover {
+            color: #38bdf8;
+            background: #1e293b;
+        }
+        /* Right Content Panel Layout */
+        .content-wrapper {
+            margin-left: var(--sidebar-width);
+            padding: 3rem 4rem;
+            width: calc(100% - var(--sidebar-width));
+            max-width: 1100px;
+            background-color: #ffffff;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.02);
+        }
+        header {
+            border-bottom: 3px solid #e2e8f0;
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+        }
+        header h1 {
+            color: #0f172a;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        h2 {
+            color: #1e3a8a;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+            margin-top: 4rem;
+            font-size: 1.75rem;
+        }
+        h3 {
+            color: #2563eb;
+            margin-top: 2rem;
+            font-size: 1.25rem;
+        }
+        pre {
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: 1.25rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        code {
+            font-family: 'Fira Code', Consolas, Monaco, monospace;
+            font-size: 0.85rem;
+        }
+        blockquote {
+            background-color: #f1f5f9;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            color: #334155;
+        }
+        .badge {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        table {
+            width: 100%;
+            margin: 1.5rem 0;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8fafc;
+            color: #0f172a;
+            font-weight: 600;
+        }
+        @media (max-width: 1024px) {
+            body { flex-direction: column; }
+            aside { width: 100%; height: auto; position: relative; }
+            .content-wrapper { width: 100%; margin-left: 0; padding: 2rem; }
+        }
     </style>
 </head>
 <body>
-    <main class="container">
-        <header>
-            <h1>Complete QA Automation & SDET Master Handbook</h1>
-            <p><strong>Subtitle:</strong> Beginner to Industry Ready Engineer</p>
-        </header>
 
-        <section>
-            <h2>PART 1: SOFTWARE TESTING FUNDAMENTALS</h2>
-            <h3>Chapter 1: Introduction to Software Testing</h3>
-            <p>Welcome to the handbook! </p>
+    <!-- INTERACTIVE SIDEBAR NAVIGATION LINKS -->
+    <aside>
+        <h2>SDET Syllabus Modules</h2>
+        <nav>
+            <ul>
+                <li><a href="#m1">1. STLC & Agile Methodologies</a></li>
+                <li><a href="#m2">2. Black Box Test Design</a></li>
+                <li><a href="#m3">3. Enterprise Defect Lifecycle</a></li>
+                <li><a href="#m4">4. Automation Programming</a></li>
+                <li><a href="#m5">5. Locators & DOM Traversal</a></li>
+                <li><a href="#m6">6. Selenium 4 Advanced UI</a></li>
+                <li><a href="#m7">7. Synchronization & Waits</a></li>
+                <li><a href="#m8">8. POM & Factory Patterns</a></li>
+                <li><a href="#m9">9. Test Runner Frameworks</a></li>
+                <li><a href="#m10">10. Behavior-Driven Dev (BDD)</a></li>
+                <li><a href="#m11">11. REST API Protocols</a></li>
+                <li><a href="#m12">12. Backend API Testing Suite</a></li>
+                <li><a href="#m13">13. Playwright Modern Runner</a></li>
+                <li><a href="#m14">14. Cypress Engine Architecture</a></li>
+                <li><a href="#m15">15. Mobile Testing Frameworks</a></li>
+                <li><a href="#m16">16. Database Verification (SQL)</a></li>
+                <li><a href="#m17">17. Performance Engineering</a></li>
+                <li><a href="#m18">18. Git Version Control Ops</a></li>
+                <li><a href="#m19">19. CI/CD Pipeline Build Architecture</a></li>
+                <li><a href="#m20">20. Docker Environments</a></li>
+                <li><a href="#m21">21. Framework Design Patterns</a></li>
+            </ul>
+        </nav>
+    </aside>
 
+    <!-- COMPREHENSIVE TEXTBOOK BODY CONTENT -->
+    <div class="content-wrapper">
+        <main>
+            <header>
+                <h1>QA Automation & SDET Master Handbook</h1>
+                <p>Complete Reference Guide: Zero to Production-Ready Automation Engineer Architecture</p>
+                <span class="badge">Production Build Live</span>
+            </header>
+
+            <!-- MODULE 1 -->
+            <section id="m1">
+                <h2>1. STLC & Agile Methodologies</h2>
+                <p>The Software Testing Life Cycle (STLC) maps systematically into Agile Sprint cadences to maintain software quality without causing development blocks.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sprint Phase</th>
+                            <th>QA Engagement Activity</th>
+                            <th>Artifact Produced</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sprint Planning</td>
+                            <td>User Story Grooming & 3-Amigos Review</td>
+                            <td>Definition of Ready (DoR) Approval</td>
+                        </tr>
+                        <tr>
+                            <td>Sprint Execution</td>
+                            <td>In-Sprint Automation & Exploratory Runs</td>
+                            <td>Test Execution Matrices</td>
+                        </tr>
+                        <tr>
+                            <td>Sprint Closure</td>
+                            <td>Regression Execution & Sign-off</td>
+                            <td>Test Summary Report</td>
+                        </tr>
+                    </tbody>
+                </table>
             </section>
-    </main>
+
+            <!-- MODULE 2 -->
+            <section id="m2">
+                <h2>2. Black Box Test Design Engineering</h2>
+                <p>Maximize test coverage boundaries while significantly dropping test execution count using mathematical test optimization vectors:</p>
+                <ul>
+                    <li><strong>Boundary Value Analysis (BVA):</strong> Evaluates boundaries. For a field accepting ranges 10-100, analyze: <code>9, 10, 11, 99, 100, 101</code>.</li>
+                    <li><strong>Equivalence Partitioning (EP):</strong> Divides data blocks into interchangeable execution groups (e.g., Negative inputs, Valid ranges, Out of bound values).</li>
+                    <li><strong>Decision Table Testing:</strong> Maps multi-conditional business matrices to ensure complete branch validation.</li>
+                </ul>
+            </section>
+
+            <!-- MODULE 3 -->
+            <section id="m3">
+                <h2>3. Enterprise Defect Lifecycle</h2>
+                <p>When an automated runner fails, bugs follow an explicit flow to maintain traceability across Jira boards:</p>
+                <pre><code>[DETECTED] ──> [TRIAGED/ASSIGNED] ──> [DEVELOPMENT FIX] ──> [RETEST RUN] ──> [CLOSED]
+     │                                                               │
+     └───────> [REJECTED/DEFERRED BY TRIAGE] <───────────────────────┘</code></pre>
+                blockquote>
+                    <strong>Defect Severity vs Priority:</strong> Severity measures the technical impact on the system architecture (e.g., API NullPointerException). Priority determines the commercial urgency for the release.
+                </blockquote>
+            </section>
+
+            <!-- MODULE 4 -->
+            <section id="m4">
+                <h2>4. Automation Programming Fundamentals</h2>
+                <p>Object-Oriented Programming (OOP) provides the architectural foundation for scalable automation frameworks.</p>
+                <pre><code>// Java Core Polymorphism & Encapsulation Example inside Base Framework
+public class WebDriverEngine {
+    private String browserType; // Encapsulated property
+
+    public WebDriverEngine(String browserType) {
+        this.browserType = browserType;
+    }
+
+    public void initializeDriver() {
+        System.out.println("Launching standard web node: " + browserType);
+    }
+}</code></pre>
+            </section>
+
+            <!-- MODULE 5 -->
+            <section id="m5">
+                <h2>5. Locators & DOM Traversal</h2>
+                <p>Resilient element strategy avoids flaky tests by decoupling scripts from volatile visual formatting layers.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Locator Strategy</th>
+                            <th>Syntax Example</th>
+                            <th>Performance Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CSS Selector</td>
+                            <td><code>input[data-testid="login-submit"]</code></td>
+                            <td>High (Native Engine)</td>
+                        </tr>
+                        <tr>
+                            <td>XPath (Relative)</td>
+                            <td><code>//div[@id="wrapper"]//button[text()="Save"]</code></td>
+                            <td>Medium (Bi-directional traversal)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- MODULE 6 -->
+            <section id="m6">
+                <h2>6. Selenium 4 Advanced UI</h2>
+                <p>Selenium 4 introduces direct W3C webdriver conformance and advanced user interaction pipelines.</p>
+                <pre><code>// Utilizing Actions class for drag-and-drop mechanics
+Actions actionBuilder = new Actions(driver);
+WebElement sourceElement = driver.findElement(By.id("draggable"));
+WebElement targetElement = driver.findElement(By.id("droppable"));
+actionBuilder.dragAndDrop(sourceElement, targetElement).perform();</code></pre>
+            </section>
+
+            <!-- MODULE 7 -->
+            <section id="m7">
+                <h2>7. Synchronization & Waits</h2>
+                <p>Asynchronous page loads require deterministic element waits to prevent race conditions during execution.</p>
+                <pre><code>// Explicit Wait configuration maximizing element polling safety
+WebDriverWait customWait = new WebDriverWait(driver, Duration.ofSeconds(15));
+WebElement dashboardWidget = customWait.until(
+    ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".dashboard-loaded"))
+);</code></pre>
+            </section>
+
+            <!-- MODULE 8 -->
+            <section id="m8">
+                <h2>8. POM & Page Factory Design Patterns</h2>
+                <p>The Page Object Model patterns isolate element mapping configurations cleanly away from testing validation workflows.</p>
+                <pre><code>// Standard Object Model Pattern Strategy
+public class AccountPage {
+    private WebDriver driver;
+    private By userProfileBadge = By.id("user-badge");
+
+    public AccountPage(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    public boolean isUserProfileDisplayed() {
+        return driver.findElement(userProfileBadge).isDisplayed();
+    }
+}</code></pre>
+            </section>
+
+            <!-- MODULE 9 -->
+            <section id="m9">
+                <h2>9. Test Runner Frameworks</h2>
+                <p>Test runners manage test suites, handle parallel execution, and hook into metadata assertions.</p>
+                <pre><code><!-- TestNG Suite Xml Configuration Matrix for parallel execution scaling -->
+<suite name="Production Regression Pipeline" parallel="methods" thread-count="4">
+    <test name="E2E Checkout Workflow Validation">
+        <classes>
+            <class name="tests.CheckoutWorkflowTest"/>
+        </classes>
+    </test>
+</suite></code></pre>
+            </section>
+
+            <!-- MODULE 10 -->
+            <section id="m10">
+                <h2>10. Behavior-Driven Dev (BDD)</h2>
+                <p>BDD bridges communication gaps between cross-functional business stakeholders and engineering teams via Gherkin text formats.</p>
+                <pre><code>Feature: Secure Customer Authentication Validation
+  Scenario: Success Verification on Valid Login Credentials
+    Given User routes to the centralized login endpoint
+    When User inputs valid credential strings into identification fields
+    Then User is seamlessly redirected to the secure internal dashboard panel</code></pre>
+            </section>
+
+            <!-- MODULE 11 -->
+            <section id="m11">
+                <h2>11. REST API Protocols</h2>
+                <p>API automation provides rapid execution feedback by testing the service layer directly before checking the UI.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Idempotent</th>
+                            <th>Success Response</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GET</td>
+                            <td>Yes</td>
+                            <td><code>200 OK</code></td>
+                        </tr>
+                        <tr>
+                            <td>POST</td>
+                            <td>No</td>
+                            <td><code>201 Created</code></td>
+                        </tr>
+                        <tr>
+                            <td>PUT</td>
+                            <td>Yes</td>
+                            <td><code>200 OK / 204 No Content</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- MODULE 12 -->
+            <section id="m12">
+                <h2>12. Backend API Testing Suite</h2>
+                <p>Programmatic API automation ensures robust payload extraction and status mapping across service builds.</p>
+                <pre><code>// RestAssured API validation pipeline schema implementation
+RestAssured.given()
+    .baseUri("https://api.gateway.internal")
+    .header("Content-Type", "application/json")
+    .body("{\"username\": \"sdet_core\"}")
+.when()
+    .post("/v1/auth")
+.then()
+    .statusCode(200)
+    .body("sessionToken", Matchers.notNullValue());</code></pre>
+            </section>
+
+            <!-- MODULE 13 -->
+            <section id="m13">
+                <h2>13. Playwright Modern Runner</h2>
+                <p>Playwright communicates directly via the browser's native developer protocol, eliminating grid bottlenecks and slow execution times.</p>
+                <pre><code>// Modern async Playwright architecture test script
+const { test, expect } = require('@playwright/test');
+
+test('Isolated Authentication Flow Verification', async ({ page }) => {
+    await page.goto('https://portal.internal');
+    await page.fill('input[name="identity"]', 'admin');
+    await page.click('#submit-trigger');
+    await expect(page).toHaveURL(/.*dashboard/);
+});</code></pre>
+            </section>
+
+            <!-- MODULE 14 -->
+            <section id="m14">
+                <h2>14. Cypress Engine Architecture</h2>
+                <p>Cypress runs directly inside the browser's execution loop, providing native access to application objects and automatic waiting capabilities.</p>
+                <pre><code>describe('Enterprise Profile Portal Checks', () => {
+    it('Verifies dynamic element tracking states', () => {
+        cy.visit('/profile');
+        cy.get('[data-cy="avatar-upload"]').should('be.visible');
+    });
+});</code></pre>
+            </section>
+
+            <!-- MODULE 15 -->
+            <section id="m15">
+                <h2>15. Mobile Testing Frameworks</h2>
+                <p>Appium acts as an intermediary server that translates standard WebDriver actions into native iOS and Android UI commands.</p>
+                <pre><code>// Appium engine capabilities assignment template block
+UiAutomator2Options mobileOptions = new UiAutomator2Options()
+    .setPlatformName("Android")
+    .setAutomationName("UiAutomator2")
+    .setDeviceName("Pixel_7_Pro")
+    .setApp("/workspace/binaries/core_app.apk");</code></pre>
+            </section>
+
+            <!-- MODULE 16 -->
+            <section id="m16">
+                <h2>16. Database Verification (SQL)</h2>
+                <p>Automated regression scripts query back-end datastores directly to verify data integrity across the user interface.</p>
+                <pre><code>// Automated JDBC connection query mapping model
+Connection DBConn = DriverManager.getConnection("jdbc:postgresql://db.internal:5432/orders", "qa_user", "pass");
+Statement sqlQuery = DBConn.createStatement();
+ResultSet dataSet = sqlQuery.executeQuery("SELECT status FROM transaction_logs WHERE id=98715");
+while(dataSet.next()) {
+    assert(dataSet.getString("status").equals("PROCESSED"));
+}</code></pre>
+            </section>
+
+            <!-- MODULE 17 -->
+            <section id="m17">
+                <h2>17. Performance Engineering</h2>
+                <p>Performance engineering measures application behavior and response times under high-concurrency workloads.</p>
+                <ul>
+                    <li><strong>Load Testing:</strong> Validates target performance metrics under standard expected traffic volumes.</li>
+                    <li><strong>Stress Testing:</strong> Pushes system limits to identify breaking points and failure behaviors.</li>
+                    <li><strong>Soak Testing:</strong> Measures memory usage and stability over extended operational periods.</li>
+                </ul>
+            </section>
+
+            <!-- MODULE 18 -->
+            <section id="m18">
+                <h2>18. Git Version Control Ops</h2>
+                <p>Git allows geographically distributed QA teams to develop and maintain automation code within a shared project space.</p>
+                <pre><code># Commands for managing feature branch updates
+git checkout -b feature/login-automation-suite
+git add .
+git commit -m "feat: integrate structural login elements mapped to POM"
+git push origin feature/login-automation-suite</code></pre>
+            </section>
+
+            <!-- MODULE 19 -->
+            <section id="m19">
+                <h2>19. CI/CD Pipeline Build Architecture</h2>
+                <p>CI/CD pipelines run automated regression tests on every code change to catch regressions before they reach production.</p>
+                <pre><code># Jenkins Pipeline Groovy Automation Script Definition
+pipeline {
+    agent any
+    stages {
+        stage('Pull Repository Context') {
+            steps { checkout scm }
+        }
+        stage('Execute Test Profiles') {
+            steps { sh 'mvn clean verify -DsuiteXmlFile=testng.xml' }
+        }
+    }
+}</code></pre>
+            </section>
+
+            <!-- MODULE 20 -->
+            <section id="m20">
+                <h2>20. Docker Environments</h2>
+                <p>Docker packages tests with all their dependencies into a single container, eliminating environment configuration discrepancies.</p>
+                <pre><code># Containerizing an automation environment
+FROM maven:3.9.6-eclipse-temurin-17
+WORKDIR /test_runner
+COPY pom.xml .
+COPY src ./src
+RUN mvn dependency:go-offline
+CMD ["mvn", "test"]</code></pre>
+            </section>
+
+            <!-- MODULE 21 -->
+            <section id="m21">
+                <h2>21. Framework Design Patterns</h2>
+                <p>Production frameworks combine multiple design patterns to maximize script reuse and support scaling across complex apps.</p>
+                <pre><code>// Singleton Design Pattern application for execution log tracking
+public class FrameworkReporter {
+    private static FrameworkReporter primaryInstance;
+    
+    private FrameworkReporter() {}
+    
+    public static synchronized FrameworkReporter getLoggerInstance() {
+        if(primaryInstance == null) {
+            primaryInstance = new FrameworkReporter();
+        }
+        return primaryInstance;
+    }
+}</code></pre>
+            </section>
+        </main>
+    </div>
+
 </body>
 </html>
